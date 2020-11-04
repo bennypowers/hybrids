@@ -1,6 +1,6 @@
 /* eslint-disable no-use-before-define */
 import * as cache from "./cache.js";
-import { storePointer } from "./utils.js";
+import { storePointer, uuid } from "./utils.js";
 
 /* istanbul ignore next */
 try { process.env.NODE_ENV } catch(e) { var process = { env: { NODE_ENV: 'production' } }; } // eslint-disable-line
@@ -139,14 +139,6 @@ function setModelState(model, state, value = model) {
 const stateGetter = (model, v = { state: "ready", value: model }) => v;
 function getModelState(model) {
   return cache.get(model, "state", stateGetter);
-}
-
-// UUID v4 generator thanks to https://gist.github.com/jed/982883
-function uuid(temp) {
-  return temp
-    ? // eslint-disable-next-line no-bitwise, no-mixed-operators
-      (temp ^ ((Math.random() * 16) >> (temp / 4))).toString(16)
-    : ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, uuid);
 }
 
 const validationMap = new WeakMap();

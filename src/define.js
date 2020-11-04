@@ -9,10 +9,10 @@ try { process.env.NODE_ENV } catch(e) { var process = { env: { NODE_ENV: 'produc
 
 const defaultMethod = (host, value) => value;
 
-const callbacksMap = new WeakMap();
+export const callbacksMap = new WeakMap();
 const propsMap = new WeakMap();
 
-function compile(Hybrid, descriptors) {
+export function compile(Hybrid, descriptors) {
   Hybrid.hybrids = descriptors;
 
   const callbacks = [];

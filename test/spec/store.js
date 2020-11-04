@@ -1589,7 +1589,9 @@ describe("store:", () => {
       const setupDep = options => {
         return {
           items: [Model, options],
-          [store.connect]: () => ({ items: Object.keys(storage).map(key => storage[key]) }),
+          [store.connect]: () => ({
+            items: Object.keys(storage).map(key => storage[key]),
+          }),
         };
       };
 

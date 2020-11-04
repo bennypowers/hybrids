@@ -41,7 +41,7 @@ export default function property(value, connect) {
     connect:
       type !== "object" && type !== "undefined"
         ? (host, key, invalidate) => {
-            if (host[key] === value) {
+            if (host.hasAttribute && host[key] === value) {
               const attrName = camelToDash(key);
 
               if (host.hasAttribute(attrName)) {
